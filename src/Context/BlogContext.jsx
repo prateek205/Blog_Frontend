@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import dotenv from "dotenv";
+import { toast } from "react-toastify";
 
 export const MyBlogContext = createContext();
 
@@ -50,9 +51,10 @@ export const BlogContextProvider = ({ children }) => {
       setBlogs((prev) => [data.blog, ...prev]);
 
       console.log("BLOG:", data);
+      toast.success("Blog Post Successfully!!!",data)
       return data;
     } catch (error) {
-      console.log(error.response.data);
+      toast.error(error.response.data);
     }
   };
 
@@ -67,9 +69,10 @@ export const BlogContextProvider = ({ children }) => {
         },
       );
 
+      toast.success("Blog Updated!!!",data)
       return data;
     } catch (error) {
-      console.log(error.response?.data || error.message);
+      toast.error(error.response?.data || error.message);
     }
   };
 
@@ -84,10 +87,11 @@ export const BlogContextProvider = ({ children }) => {
         setBlogs((prev) => prev.filter((blog) => blog._id !== id));
       }
 
+      toast.success("Blog Deleted Successfully!!!",data)
       return data;
       console.log("DATA_REMOVED", data);
     } catch (error) {
-      console.log(error.response.data);
+      toast.error(error.response.data);
     }
   };
 

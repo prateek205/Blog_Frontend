@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const AuthContext = createContext();
 
@@ -28,9 +29,10 @@ export const AuthContextProvider = ({ children }) => {
 
       console.log("USER:", data);
 
+      toast.success("User Register !!!",data)
       return data;
     } catch (error) {
-      console.log(error.response.data);
+      toast.error(error.response.data);
     }
   };
 
@@ -44,13 +46,13 @@ export const AuthContextProvider = ({ children }) => {
       await getProfile();
       console.log("USER:", data.user);
 
+      toast.success("Login Successfull !!!",data)
       return data;
     } catch (error) {
-      console.log(error.response.data);
+      toast.error(error.response.data);
     }
   };
 
-  const [loading, setLoading] = useState(true);
 
   const getProfile = async () => {
     console.log("GET PROFILE RUNNING");
@@ -67,8 +69,6 @@ export const AuthContextProvider = ({ children }) => {
         return;
       }
       console.error(error);
-    } finally {
-      setLoading(false); // Done checking
     }
   };
 
@@ -81,9 +81,10 @@ export const AuthContextProvider = ({ children }) => {
         console.log("UPDATED USER:", data.user);
         setUser(data.user);
       }
+      toast.success("Profile Updated !!!",data)
       return data;
     } catch (error) {
-      console.log(error.response.data);
+      toast.error(error.response.data);
     }
   };
 
@@ -94,18 +95,16 @@ export const AuthContextProvider = ({ children }) => {
       });
       setUser(null);
       navigate("/login");
+      toast.success("User Logout !!!",data)
+      return data
     } catch (error) {
-      console.log(error);
+      toast.success("Logout Failed...",error);
     }
   };
 
   useEffect(() => {
     getProfile();
   }, []);
-
-  if (loading) {
-    return <div>Loading session...</div>; // Or a nice spinner
-  }
 
   return (
     <AuthContext.Provider

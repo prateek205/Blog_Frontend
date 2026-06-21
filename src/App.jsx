@@ -10,35 +10,42 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import Contact from "./Pages/Contact";
 import ProtectedRoute from "./Pages/User/ProtectedRoute";
+import { ToastContainer, Zoom } from "react-toastify";
 
 const App = () => {
   return (
     <React.Fragment>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route
-            path="/blog"
-            element={
-              <ProtectedRoute>
-                <CreateBlog />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
-        <Footer />
+      <ToastContainer
+        position="top-center"
+        autoClose={1200}
+        theme="dark"
+        transition={Zoom}
+      />
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route
+          path="/blog"
+          element={
+            <ProtectedRoute>
+              <CreateBlog />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+      <Footer />
     </React.Fragment>
   );
 };

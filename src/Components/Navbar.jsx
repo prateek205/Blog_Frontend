@@ -5,9 +5,8 @@ import { MyAuth } from "../Context/UserContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  
 
-  const {user, handleLogout } = MyAuth();
+  const { user, handleLogout } = MyAuth();
 
   return (
     <section className="w-full sticky top-0 z-50 backdrop-blur-md bg-white/10 border-b border-white/20 shadow-lg">
@@ -109,17 +108,30 @@ const Navbar = () => {
         </ul>
 
         <div className="flex flex-col gap-3 px-6 mt-5">
-          <Link to="/login" onClick={() => setIsOpen(false)}>
-            <button className="w-full py-2 rounded-full border border-indigo-600 text-indigo-600">
-              Login
+          {user && (
+            <Link to="/profile" onClick={() => setIsOpen(false)}>
+              <button className="w-full px-5 py-2 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md hover:scale-105 transition-all duration-300">
+                Profile
+              </button>
+            </Link>
+          )}
+          {user ? (
+            <button
+              onClick={() => {
+                handleLogout();
+                setIsOpen(false);
+              }}
+              className="w-full px-5 py-2 rounded-full border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all duration-300"
+            >
+              Logout
             </button>
-          </Link>
-
-          <Link to="/profile" onClick={() => setIsOpen(false)}>
-            <button className="w-full py-2 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
-              Profile
-            </button>
-          </Link>
+          ) : (
+            <Link to="/login" onClick={() => setIsOpen(false)}>
+              <button className="w-full px-5 py-2 rounded-full border border-indigo-600 text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all duration-300">
+                Login
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </section>
