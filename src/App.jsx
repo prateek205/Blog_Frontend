@@ -11,6 +11,8 @@ import Footer from "./Components/Footer";
 import Contact from "./Pages/Contact";
 import ProtectedRoute from "./Pages/User/ProtectedRoute";
 import { ToastContainer, Zoom } from "react-toastify";
+import BlogDetails from "./Pages/BlogDetails";
+import ScrollToTop from "./Components/ScrollToTop";
 
 const App = () => {
   return (
@@ -21,6 +23,7 @@ const App = () => {
         theme="dark"
         transition={Zoom}
       />
+      <ScrollToTop/>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -33,6 +36,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+        <Route path="/blogDetails/:id" element={<BlogDetails/>}/>
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

@@ -90,7 +90,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const handleLogout = async () => {
     try {
-      const { data } = await axios.get(`${BASE_URL}/logout`, {
+      const { data } = await axios.post(`${BASE_URL}/logout`, {
         withCredentials: true,
       });
       setUser(null);

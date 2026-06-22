@@ -1,6 +1,7 @@
 import React from "react";
 import { FaSearch, FaArrowRight, FaBookOpen, FaUsers } from "react-icons/fa";
 import { MyBlog } from "../Context/BlogContext";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const { blogs } = MyBlog();
@@ -77,11 +78,12 @@ const Hero = () => {
                 <p className="text-gray-400 mt-4">
                   {featuredBlog.description.slice(0, 150)}...
                 </p>
-
+              <Link to={`/blogDetails/${featuredBlog._id}`}>
                 <button className="mt-6 flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 px-5 py-3 rounded-xl text-white transition">
                   Read Article
                   <FaArrowRight />
                 </button>
+              </Link>
               </div>
             </div>
           </div>
