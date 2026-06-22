@@ -28,10 +28,12 @@ export const BlogContextProvider = ({ children }) => {
 
   const getMyBlogs = async () => {
     try {
+      console.log("GET MY BLOGS RUNNING");
       const { data } = await axios.get(`${BASE_URL}/myBlogs`, {
         withCredentials: true,
       });
-
+      
+      console.log("MY BLOGS RESPONSE:", data);
       setMyBlogs(data.blogs);
     } catch (error) {
       console.log(error.response?.data);
