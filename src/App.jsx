@@ -23,10 +23,10 @@ const App = () => {
         theme="dark"
         transition={Zoom}
       />
-      <ScrollToTop/>
+      <ScrollToTop />
       <Navbar />
       <Routes>
-        <Route path="/blog" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route
           path="/blog"
@@ -36,7 +36,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="/blogDetails/:id" element={<BlogDetails/>}/>
+        <Route path="/blogDetails/:id" element={<BlogDetails />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
