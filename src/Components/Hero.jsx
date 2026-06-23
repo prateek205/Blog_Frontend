@@ -122,6 +122,13 @@ const Hero = () => {
                     {blog.category}
                   </span>
 
+                  <p className="text-lg font-bold text-white py-3">
+                    Author:{" "}
+                    <span className="text-lg font-normal">
+                      {blog.author.name}
+                    </span>
+                  </p>
+
                   <h3 className="text-xl font-bold text-white mt-4 line-clamp-2">
                     {blog.title}
                   </h3>
