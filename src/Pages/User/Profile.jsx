@@ -66,24 +66,6 @@ const Profile = () => {
               <p className="text-blue-400 text-lg mt-2">MERN Stack Developer</p>
 
               <p className="text-gray-300 mt-4 max-w-2xl">{user?.bio}</p>
-
-              <div className="flex flex-wrap gap-3 mt-5 justify-center md:justify-start">
-                <span className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm">
-                  React.js
-                </span>
-
-                <span className="bg-green-600 text-white px-4 py-2 rounded-full text-sm">
-                  Node.js
-                </span>
-
-                <span className="bg-purple-600 text-white px-4 py-2 rounded-full text-sm">
-                  MongoDB
-                </span>
-
-                <span className="bg-orange-600 text-white px-4 py-2 rounded-full text-sm">
-                  Tailwind CSS
-                </span>
-              </div>
             </div>
           </div>
         </div>
